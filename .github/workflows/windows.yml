@@ -19,7 +19,8 @@ jobs:
 
       - name: changing path
         run: |
-          echo "$Env:PATH += 'C:/Users/runneradmin/scoop/shims'" >>$PROFILE
+          Write-Output "`n`$Env:PATH += ';$HOME/scoop/shims'`n" >> $PROFILE
+          Get-Content $PROFILE
 
       - name: show path
         run: |
