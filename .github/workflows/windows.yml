@@ -20,10 +20,11 @@ jobs:
       # ref: https://github.community/t/append-path-on-windows/16205
       - name: normal build
         run: |
-          echo "$HOME/scoop/shims" >> $GITHUB_PATH
           echo $Env:PATH
           $Env:PATH += "$HOME/scoop/shims"
-          scoop which xmake
+          echo $Env:PATH
+          echo "$HOME/scoop/shims"
+          ./$HOME/scoop/shims/scoop.ps1 which xmake
           xmake
 
       - name: zig cc build
