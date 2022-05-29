@@ -11,11 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: MinoruSekine/setup-scoop@v1
+
       - name: install
-        run: |
-          Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-          iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
-          scoop install zig xmake
+      - run: scoop install zig xmake
 
       - name: normal build
         run: |
