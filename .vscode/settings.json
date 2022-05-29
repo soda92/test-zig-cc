@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.gradle": "groovy",
+        "*.json": "jsonc",
+        "*.svelte": "svelte",
+        "istream": "c"
+    }
+}

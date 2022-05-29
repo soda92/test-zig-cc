@@ -1,0 +1,27 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: install
+        run: |
+          Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+          irm get.scoop.sh | iex
+          scoop install zig xmake
+
+      - name: normal build
+        run: |
+          xmake
+
+      - name: zig cc build
+        run: |
+          xmake f --cc="zig cc" --cxx="zig cc" --ld="zig c++" -c
+          xmake
