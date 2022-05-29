@@ -16,10 +16,13 @@ jobs:
           Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
           iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
           scoop install zig xmake
-          echo "$HOME/scoop/shims" >> $GITHUB_PATH
 
       - name: normal build
         run: |
+          ls $Env:PATH
+          $Env:PATH += ";$HOME/scoop/shims"
+          ls $Env:PATH
+          scoop which xmake
           xmake
 
       - name: zig cc build
