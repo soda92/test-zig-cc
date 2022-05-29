@@ -17,12 +17,12 @@ jobs:
           iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
           scoop install zig xmake
 
-
       - name: changing path
         run: |
-          echo "##[add-path]$HOME/scoop/shims"
-          echo $Env:PATH
-          $Env:PATH += ";$HOME/scoop/shims"
+          echo "$Env:PATH += 'C:/Users/runneradmin/scoop/shims'" >>$PROFILE
+
+      - name: show path
+        run: |
           echo $Env:PATH
 
       - name: normal build
