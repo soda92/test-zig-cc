@@ -17,14 +17,16 @@ jobs:
           iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
           scoop install zig xmake
 
-      # ref: https://github.community/t/append-path-on-windows/16205
+
+      - name: changing path
+        run: |
+          echo "##[add-path]$HOME/scoop/shims"
+          echo $Env:PATH
+          $Env:PATH += ";$HOME/scoop/shims"
+          echo $Env:PATH
+
       - name: normal build
         run: |
-          echo $Env:PATH
-          $Env:PATH += "$HOME/scoop/shims"
-          echo $Env:PATH
-          echo "$HOME/scoop/shims"
-          ./$HOME/scoop/shims/scoop.ps1 which xmake
           xmake
 
       - name: zig cc build
