@@ -22,9 +22,12 @@ jobs:
           Write-Output "`n`$Env:PATH += ';$HOME/scoop/shims'`n" >> $PROFILE
           Get-Content $PROFILE
 
-      - name: show path
+      - name: show info
         run: |
-          echo $Env:PATH
+          scoop which xmake
+          scoop which zig
+          xmake --version
+          zig version
 
       - name: normal build
         run: |
@@ -32,6 +35,5 @@ jobs:
 
       - name: zig cc build
         run: |
-          $Env:PATH += "$HOME/scoop/shims"
           xmake f --cc="zig cc" --cxx="zig cc" --ld="zig c++" -c
           xmake
