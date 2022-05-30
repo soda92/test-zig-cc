@@ -1,16 +1,16 @@
+#include <array>
 #include <vector>
 #include <string>
 #include <iostream>
 
 using std::cout;
 using std::string;
-using std::vector;
 
 int main()
 {
-    vector<string> array = {"Hello", "world"};
-    for (const auto &str : array)
+    std::array<int, 3> arr({1,2,3});
+    for (const auto &i : arr)
     {
-        cout << str << "\n";
+        cout << i << "\n";
     }
 }

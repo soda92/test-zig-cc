@@ -3,11 +3,11 @@
     "tasks": [
         {
             "label": "build",
-            "command": "zig c++ main.cc -o main.exe -g",
+            "command": "./build.ps1",
             "type": "shell",
             "args": [],
             "problemMatcher": [
-                "$msCompile"
+                "$gcc"
             ],
             "presentation": {
                 "reveal": "always"
